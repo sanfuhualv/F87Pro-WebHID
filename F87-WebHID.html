@@ -52,7 +52,7 @@ main{margin-left:var(--nav-width)}
 @media(max-width:370px){:root{--nav-font-size:15px;--nav-active-scale:1.13}.canvas-toolbar{gap:6px}.canvas-toolbar .text-button{font-size:9px}.custom-meta{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){.sidebar .nav,.sidebar .nav .nav-text,.sidebar .nav::before{transition:none}}
 
-/* 序列帧二级模式列表：选中项与“序列帧”主入口同行，切换时两项上下移动。 */
+/* 序列帧二级模式列表：选中项与“序列帧”主入口同行，切换时菜单上下移动。 */
 .frames-mode-nav{position:absolute;right:14px;display:none;flex-direction:column;z-index:3;transform:translateY(var(--mode-shift,0px));transition:transform .52s var(--nav-motion);will-change:transform}
 .frames-page .frames-mode-nav{display:flex}
 .frames-mode-option{padding:0;min-height:44px;display:flex;align-items:center;justify-content:flex-end;color:#b8b8b8;font-family:"Noto Sans SC","Microsoft YaHei",sans-serif;font-weight:900;font-size:20px;line-height:1.4;letter-spacing:.5px;white-space:nowrap;outline:none!important;box-shadow:none!important;transition:color .3s var(--nav-motion)}
@@ -67,6 +67,7 @@ main{margin-left:var(--nav-width)}
 .frames-mode-play #frames-section .onboard-palette-row > :not(#frames-open-animations):not(#frames-open-settings){display:none!important}
 .frames-mode-play #frames-section .onboard-palette-row{justify-content:center;gap:26px}
 .frames-mode-play #frames-keyboard{pointer-events:none}
+.frames-mode-community #frames-section > .onboard-editor{display:none}
 .frames-entering-edit .frames-lower,.frames-leaving-edit .frames-lower{opacity:0;visibility:hidden;pointer-events:none}
 .frames-entering-edit .onboard-palette-row,.frames-leaving-edit .onboard-palette-row{opacity:0;visibility:hidden}
 .frames-upper{will-change:auto}
@@ -315,9 +316,88 @@ main{margin-left:var(--nav-width)}
 #frames-animations-empty{margin:55px 0;text-align:center;font-size:12px;color:#999;line-height:1.8}
 .frames-animation-meta{display:block;color:#999;font-size:10px;padding:0 30px 12px 3px}
 @media(max-width:680px){.sidebar .brand b{font-size:28px}}
+
+/* Receiver entry screen shares the workspace's grid, type and motion. */
+.connection-screen{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;min-width:320px;padding:34px 48px;background:#fff;background-image:linear-gradient(#00000004 1px,transparent 1px),linear-gradient(90deg,#00000004 1px,transparent 1px);background-size:50px 50px;color:#000;overflow:auto;opacity:1;visibility:visible;transform:translateY(0);filter:blur(0);transition:opacity .7s var(--nav-motion),transform .9s var(--nav-motion),filter .7s var(--nav-motion),visibility 0s}
+.connection-top{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-shrink:0}
+.connection-brand{display:flex;align-items:baseline;gap:16px;font-family:"Space Grotesk",sans-serif}
+.connection-brand b{font-size:36px;letter-spacing:-2px;line-height:1}
+.connection-brand>span{font-size:13px;letter-spacing:1px}
+.connection-indicator{display:flex;align-items:center;gap:12px;color:#888;font-size:11px;font-family:"Space Grotesk","Noto Sans SC",sans-serif}
+.connection-indicator i{width:6px;height:6px;border:1px solid #000;border-radius:50%}
+.connection-indicator>span:first-of-type{color:#000;letter-spacing:1px}
+.connection-layout{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;flex:1;width:100%;max-width:1500px;margin:0 auto;padding:70px 28px 90px}
+.connection-copy{position:relative;z-index:2}
+.connection-eyebrow{font-family:"Space Grotesk",sans-serif;font-size:10px;letter-spacing:3px;margin:0 0 30px;color:#888}
+#connection-title{font-family:"Noto Sans SC","Microsoft YaHei",sans-serif;font-size:clamp(58px,6.4vw,104px);font-weight:900;line-height:1.28;letter-spacing:-5px;margin:0 0 30px;transform:skewX(-6deg);transform-origin:left center;text-shadow:6px 8px 0 #00000009}
+#connection-title>span{display:block;color:#000;white-space:nowrap}
+.connection-description{font-size:14px;color:#888;line-height:1.8;margin:0 0 34px}
+.connection-cta{display:inline-flex;align-items:center;justify-content:space-between;gap:36px;min-height:62px;min-width:270px;padding:10px 12px 10px 27px;background:#000;color:#fff;border:1px solid #000;border-radius:40px;font-family:"Noto Sans SC","Microsoft YaHei",sans-serif;font-size:14px;font-weight:600;transition:transform .35s var(--nav-motion),box-shadow .35s var(--nav-motion),background .25s}
+.connection-cta:hover:enabled{transform:translateY(-3px);box-shadow:0 8px 0 #0000000b}
+.connection-cta:active:enabled{transform:translateY(0);box-shadow:none}
+.connection-cta:focus-visible{outline:2px solid #000;outline-offset:5px}
+.connection-cta:disabled{opacity:.55}
+.connection-arrow{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:#fff;color:#000;font-family:"Space Grotesk",sans-serif;font-size:25px;line-height:1;transition:transform .35s var(--nav-motion)}
+.connection-cta:hover:enabled .connection-arrow{transform:rotate(45deg)}
+.connection-error{max-width:390px;margin:20px 0 0;padding-left:12px;border-left:2px solid #000;color:#555;font-size:12px;line-height:1.8;overflow-wrap:anywhere}
+.connection-art{position:relative;width:100%;aspect-ratio:1.12;isolation:isolate}
+.connection-art::before{content:"87";position:absolute;top:5%;left:12%;z-index:-1;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:clamp(230px,29vw,450px);line-height:1;letter-spacing:-30px;color:#00000004;transform:skewX(-8deg)}
+.connection-keyboard{position:absolute;top:40%;left:-3%;width:106%;aspect-ratio:620/238;border:1px solid #d8d8d8;border-radius:15px;background:#f6f6f6;box-shadow:0 7px 0 #e5e5e5,0 28px 35px -20px #00000025;transform:rotate(-9deg);animation:connection-keyboard-float 7s ease-in-out infinite}
+.connection-keyboard>span{position:absolute;display:grid;place-items:center;background:#fff;color:#999;border:1px solid #dedede;border-radius:4px;box-shadow:0 2px 0 #dedede;font-family:"Space Grotesk",sans-serif;font-size:clamp(4px,.55vw,9px);line-height:1;overflow:hidden}
+.connection-keyboard>.connection-key-dark{background:#111;border-color:#111;color:#fff;box-shadow:0 2px 0 #555}
+.connection-orbit{position:absolute;top:6%;left:47%;width:140px;aspect-ratio:1;border:1px solid #00000009;border-radius:50%;transform:translateX(-50%);animation:connection-signal 4s ease-in-out infinite}
+.connection-orbit::before,.connection-orbit::after{content:"";position:absolute;border:1px solid #0000000b;border-radius:50%;inset:18px}
+.connection-orbit::after{inset:-22px;border-style:dashed;border-color:#00000008}
+.connection-receiver{position:absolute;top:9%;left:44%;width:48px;transform:rotate(-9deg);filter:drop-shadow(8px 15px 8px #0000000e)}
+.connection-usb{position:relative;width:70%;height:29px;margin:auto;background:linear-gradient(90deg,#bfc1c3,#f3f3f3 24%,#e3e4e5 72%,#b7b9bb);border:1px solid #b5b7b9;border-radius:1px 1px 0 0;box-shadow:inset 0 1px 0 #fff,inset 1px 0 0 #ffffff80}
+.connection-usb::before,.connection-usb::after{content:"";position:absolute;top:8px;width:6px;height:7px;background:#76797c;border-radius:1px;box-shadow:inset 0 1px 1px #0003}
+.connection-usb::before{left:18%}
+.connection-usb::after{right:18%}
+.connection-dongle{position:relative;height:48px;padding:7px 0;border:1px solid #151515;border-radius:3px 3px 7px 7px;background:linear-gradient(110deg,#292929,#111 45%,#191919);box-shadow:inset 0 1px 0 #ffffff26,inset -1px 0 0 #ffffff0a;display:flex;flex-direction:column;align-items:center;justify-content:space-between;color:#fff;font-family:"Space Grotesk",sans-serif}
+.connection-dongle>span{font-size:11px;font-weight:700;letter-spacing:-.6px}
+.connection-dongle>i{width:3px;height:3px;border-radius:50%;background:#fff}
+.connection-dongle>small{font-size:7px;color:#999;letter-spacing:1px}
+.connection-art-caption{position:absolute;bottom:0;left:12%;right:5%;display:flex;align-items:center;gap:18px;color:#aaa;font-family:"Space Grotesk",sans-serif;font-size:9px;letter-spacing:2px}
+.connection-art-caption>i{flex:1;height:1px;background:#e5e5e5}
+body>.sidebar,body>#workspace{opacity:1;filter:blur(0);transform:translateY(0);transition:opacity .75s .2s var(--nav-motion),transform .9s .15s var(--nav-motion),filter .75s .15s var(--nav-motion),visibility 0s}
+body.receiver-offline{overflow:hidden}
+.receiver-offline>.sidebar,.receiver-offline>#workspace{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(26px);filter:blur(5px);transition-delay:0s}
+body:not(.receiver-offline)>.connection-screen{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(-35px);filter:blur(6px);transition-delay:0s,0s,0s,.9s}
+body:not(.receiver-offline) .connection-keyboard,body:not(.receiver-offline) .connection-orbit{animation-play-state:paused}
+.receiver-connecting .connection-indicator i{background:#000;animation:connection-wait 1s ease-in-out infinite}
+.receiver-connecting .connection-orbit{animation-duration:1.2s}
+.receiver-connecting .connection-arrow{animation:connection-wait 1s ease-in-out infinite}
+@keyframes connection-keyboard-float{0%,100%{transform:translateY(0) rotate(-9deg)}50%{transform:translateY(-10px) rotate(-8deg)}}
+@keyframes connection-signal{0%,100%{opacity:.45;transform:translateX(-50%) scale(.95)}50%{opacity:1;transform:translateX(-50%) scale(1.05)}}
+@keyframes connection-wait{0%,100%{opacity:.35}50%{opacity:1}}
+@media(min-width:1700px){.connection-layout{gap:80px}}
+@media(max-width:1120px){.connection-screen{padding:30px}.connection-layout{padding:60px 8px;gap:15px}#connection-title{font-size:clamp(52px,6.4vw,76px);letter-spacing:-3px}.connection-cta{min-width:245px;gap:20px}.connection-description{font-size:12px}.connection-receiver{width:40px}.connection-orbit{width:110px}.connection-art-caption{font-size:8px;letter-spacing:1px}}
+@media(max-width:680px){.connection-screen{padding:24px}.connection-brand b{font-size:28px}.connection-brand{gap:10px}.connection-brand>span{font-size:10px}.connection-indicator{gap:8px;font-size:9px}.connection-indicator>span:last-child{display:none}.connection-layout{grid-template-columns:1fr;padding:45px 6px 30px;gap:20px;align-content:center}.connection-copy{order:1}.connection-eyebrow{font-size:8px;letter-spacing:2px;margin-bottom:22px}#connection-title{font-size:clamp(47px,11.5vw,74px);letter-spacing:-3px;margin-bottom:20px}.connection-description{margin-bottom:23px;font-size:12px}.connection-cta{min-height:56px;min-width:250px;font-size:12px;padding-left:22px}.connection-arrow{width:34px;height:34px;font-size:23px}.connection-art{order:2;max-width:400px;aspect-ratio:1.9;margin:10px auto 0}.connection-art::before{top:-8%;font-size:200px;letter-spacing:-15px;left:30%}.connection-keyboard{top:34%;width:92%;left:4%;border-radius:9px}.connection-keyboard>span{font-size:5px;border-radius:2px;box-shadow:0 1px 0 #ddd}.connection-orbit,.connection-receiver{display:none}.connection-art-caption{display:none}.connection-error{font-size:11px}}
+@media(max-height:650px) and (min-width:681px){.connection-layout{padding-top:30px;padding-bottom:30px}.connection-art{max-width:440px;justify-self:center}#connection-title{font-size:60px}.connection-eyebrow{margin-bottom:20px}.connection-description{margin-bottom:24px}}
+@media(prefers-reduced-motion:reduce){.connection-screen,body>.sidebar,body>#workspace,.connection-cta,.connection-arrow{transition:none!important}.connection-keyboard,.connection-orbit,.receiver-connecting .connection-indicator i,.receiver-connecting .connection-arrow{animation:none!important}}
+
+/* Black labels, tracks and thumbs for backlight and side-light parameters. */
+.native-adjustment :is(label,output){color:#000}
+.native-adjustment input[type=range]{appearance:none;-webkit-appearance:none;accent-color:#000;background:transparent;height:24px;margin-top:7px;color:#000}
+.native-adjustment input[type=range]::-webkit-slider-runnable-track{height:3px;background:#000;border-radius:2px}
+.native-adjustment input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:22px;height:22px;margin-top:-9.5px;border:0;border-radius:50%;background:#000}
+.native-adjustment input[type=range]::-moz-range-track,.native-adjustment input[type=range]::-moz-range-progress{height:3px;background:#000;border-radius:2px}
+.native-adjustment input[type=range]::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:50%;background:#000}
+.native-adjustment input[type=range]:focus-visible{outline:2px solid #000;outline-offset:4px}
+
+/* Hide scrollbars throughout the page, including horizontal lists and dialogs. */
+*,*::before,*::after{scrollbar-width:none!important;-ms-overflow-style:none!important}
+*::-webkit-scrollbar{display:none!important;width:0!important;height:0!important}
 </style></head>
-<body class="backlight-page lighting-page">
-<aside class="sidebar" aria-label="灯光功能"><a href="#" class="brand" aria-label="F87 浏览器灯光工作台"><b>F87pro</b><span>WebHID</span></a><nav aria-label="功能导航"><button class="nav active" data-page="backlight" aria-current="page"><span class="nav-text">键盘背光</span></button><button class="nav" data-page="side" aria-current="false"><span class="nav-text">侧边灯条</span></button><button class="nav" data-page="onboard" aria-current="false"><span class="nav-text">自定义模式</span></button><button class="nav" data-page="frames" aria-current="false"><span class="nav-text">序列帧</span></button><button class="nav" data-page="settings" aria-current="false"><span class="nav-text">设置</span></button></nav><div id="frames-mode-nav" class="frames-mode-nav" role="tablist" aria-label="序列帧显示模式"><button class="frames-mode-option" type="button" role="tab" data-frames-mode="play" aria-selected="false"><span class="frames-mode-text">播放动画</span></button><button class="frames-mode-option active" type="button" role="tab" data-frames-mode="edit" aria-selected="true"><span class="frames-mode-text">编辑动画</span></button></div></aside>
+<body class="backlight-page lighting-page receiver-offline">
+<section id="connection-screen" class="connection-screen" aria-labelledby="connection-title">
+ <div class="connection-top"><div class="connection-brand"><b>F87pro</b><span>WebHID</span></div></div>
+ <div class="connection-layout">
+  <div class="connection-copy"><h1 id="connection-title"><span>让光，</span><span>即刻就位。</span></h1><button id="connection-screen-connect" class="connection-cta" type="button"><span id="connection-screen-label">连接 2.4G 接收器</span><span class="connection-arrow" aria-hidden="true">↗</span></button><p id="connection-screen-error" class="connection-error hidden" role="alert"></p></div>
+  <div class="connection-art" aria-hidden="true"><div class="connection-orbit"></div><div class="connection-receiver"><div class="connection-usb"></div><div class="connection-dongle"><span>F87</span><i></i><small>2.4G</small></div></div><div id="connection-keyboard" class="connection-keyboard"></div></div>
+ </div>
+</section>
+<aside class="sidebar" aria-label="灯光功能"><a href="#" class="brand" aria-label="F87 浏览器灯光工作台"><b>F87pro</b><span>WebHID</span></a><nav aria-label="功能导航"><button class="nav active" data-page="backlight" aria-current="page"><span class="nav-text">键盘背光</span></button><button class="nav" data-page="side" aria-current="false"><span class="nav-text">侧边灯条</span></button><button class="nav" data-page="onboard" aria-current="false"><span class="nav-text">自定义模式</span></button><button class="nav" data-page="frames" aria-current="false"><span class="nav-text">序列帧</span></button><button class="nav" data-page="settings" aria-current="false"><span class="nav-text">设置</span></button></nav><div id="frames-mode-nav" class="frames-mode-nav" role="tablist" aria-label="序列帧显示模式"><button class="frames-mode-option" type="button" role="tab" data-frames-mode="play" aria-selected="false"><span class="frames-mode-text">播放动画</span></button><button class="frames-mode-option active" type="button" role="tab" data-frames-mode="edit" aria-selected="true"><span class="frames-mode-text">编辑动画</span></button><button class="frames-mode-option" type="button" role="tab" data-frames-mode="community" aria-selected="false"><span class="frames-mode-text">浏览社区</span></button></div></aside>
 <main id="workspace"><header><div><div class="breadcrumb">工作空间 <span>/</span> <span id="page-crumb">灯效模板</span></div><h1 id="page-title">让键盘，自成光景<span>。</span></h1><p id="page-subtitle">选择背光或侧灯效果，调整后自动应用。</p></div><div class="header-actions"><span class="status-pill" id="connection-status">未连接</span><button class="button primary" id="connect">连接 2.4G 接收器 <span>↗</span></button><button class="button secondary hidden" id="disconnect">断开连接</button></div></header>
 
 <div id="error" class="error hidden" role="alert"></div><div id="message" class="notice" role="status">先连接接收器。授权与连接不会自动改动键盘灯光。</div>
@@ -329,12 +409,12 @@ main{margin-left:var(--nav-width)}
  <div class="native-bottom"><div class="native-adjustments">
   <div id="native-brightness-field" class="native-adjustment"><label for="native-brightness">灯光亮度 <output id="native-brightness-value">50%</output></label><input id="native-brightness" type="range" min="0" max="4" value="2"><span class="parameter-unavailable">此模式无需调整</span></div>
   <div id="native-speed-field" class="native-adjustment"><label for="native-speed">播放速度 <output id="native-speed-value">2 / 4</output></label><input id="native-speed" type="range" min="0" max="4" value="2"><span class="parameter-unavailable">此模式无需调整</span></div>
- </div><p id="native-result" class="native-read-state" role="status">连接后自动读取当前灯效</p></div>
+ </div><p id="native-result" class="native-read-state hidden" role="status">连接后自动读取当前灯效</p></div>
  <div hidden><span id="effect-orb"></span><span id="effect-name"></span><span id="effect-description"></span></div>
 </div>
 <section id="settings-section" class="backlight-workspace hidden" aria-label="设置">
  <div class="native-stage"><section class="mode-column" aria-label="设置分类"><div id="global-categories" class="mode-list" role="group" aria-label="设置分类" tabindex="0"></div></section><section class="color-column" aria-label="设置选项"><div id="global-sleep-options" class="native-color-list" role="group" aria-label="休眠时间" tabindex="0"></div><div id="global-debounce-options" class="native-color-list hidden" role="group" aria-label="按键去抖档位" tabindex="0"></div></section></div>
- <div class="native-bottom"><div class="native-adjustments" aria-hidden="true"></div><p id="global-result" class="native-read-state" role="status">未连接 · 连接后自动读取当前设置</p></div>
+ <div class="native-bottom"><div class="native-adjustments" aria-hidden="true"></div><p id="global-result" class="native-read-state hidden" role="status">未连接 · 连接后自动读取当前设置</p></div>
 </section>
 <section id="onboard-section" class="backlight-workspace hidden" aria-label="自定义模式">
  <div class="onboard-editor">
@@ -343,7 +423,7 @@ main{margin-left:var(--nav-width)}
   <form id="onboard-template-form" class="onboard-template-form hidden"><label class="sr-only" for="onboard-template-name">模板名称</label><input id="onboard-template-name" maxlength="40" placeholder="模板名称" autocomplete="off"><button type="submit">保存</button><button id="onboard-template-cancel" type="button">取消</button><span id="onboard-template-error" class="hidden" role="alert"></span></form>
   
  </div>
- <div class="onboard-bottom"><p id="onboard-result" role="status">停止涂色 1 秒后自动保存到键盘 · 可先离线编辑</p><button id="onboard-retry" class="onboard-retry hidden">重试保存</button></div>
+ <div class="onboard-bottom"><p id="onboard-result" class="hidden" role="status">停止涂色 1 秒后自动保存到键盘 · 可先离线编辑</p><button id="onboard-retry" class="onboard-retry hidden">重试保存</button></div>
 </section>
 <section id="frames-section" class="backlight-workspace hidden" aria-label="序列帧">
  <div class="onboard-editor">
@@ -361,7 +441,7 @@ main{margin-left:var(--nav-width)}
 </section>
 <section id="side-section" class="side-section backlight-workspace hidden" aria-label="侧边灯条">
  <div class="native-stage"><section class="mode-column" aria-label="侧灯模式"><div id="side-mode-list" class="mode-list side-mode-list" role="group" aria-label="侧灯模式" tabindex="0"></div></section><section class="color-column" aria-label="侧灯颜色"><div id="side-colors" class="native-color-list" role="group" aria-label="侧灯颜色"></div></section></div>
- <div class="native-bottom"><div class="native-adjustments"><div id="side-brightness-field" class="native-adjustment"><label for="side-brightness">灯光亮度 <output id="side-brightness-value">50%</output></label><input id="side-brightness" type="range" min="0" max="4" value="2"></div><div id="side-speed-field" class="native-adjustment"><label for="side-speed">播放速度 <output id="side-speed-value">2 / 4</output></label><input id="side-speed" type="range" min="0" max="4" value="2"></div></div><p id="side-result" class="native-read-state" role="status">调整后自动应用</p></div>
+ <div class="native-bottom"><div class="native-adjustments"><div id="side-brightness-field" class="native-adjustment"><label for="side-brightness">灯光亮度 <output id="side-brightness-value">50%</output></label><input id="side-brightness" type="range" min="0" max="4" value="2"></div><div id="side-speed-field" class="native-adjustment"><label for="side-speed">播放速度 <output id="side-speed-value">2 / 4</output></label><input id="side-speed" type="range" min="0" max="4" value="2"></div></div><p id="side-result" class="native-read-state hidden" role="status">调整后自动应用</p></div>
  <div hidden><select id="side-mode" aria-label="侧灯模式内部值"></select><select id="side-color" aria-label="侧灯颜色内部值"><option value="0">正红</option><option value="1">纯绿</option><option value="2">纯蓝</option><option value="3">明黄</option><option value="4">品红</option><option value="5">青色</option><option value="6">白色</option><option value="7">混色</option></select></div>
 </section>
 </section>
@@ -689,13 +769,16 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
  function store(key,value){try{localStorage.setItem(key,JSON.stringify(value));return true;}catch{return false;}}
  function load(key){try{return JSON.parse(localStorage.getItem(key));}catch{return null;}}
  function note(message){$('message').textContent=message;}
- function error(message=''){$('error').textContent=message;$('error').classList.toggle('hidden',!message);}
+ function error(message=''){
+  for(const id of ['error','connection-screen-error']){$(id).textContent=message;$(id).classList.toggle('hidden',!message);}
+ }
  const transport=new P.Transport({onDisconnect:()=>{cancelNative();cancelNativeRead();cancelSide();cancelBoard();cancelGlobal();stopPlayback();stopFramesLive();refreshConnection();error('接收器已移除，未继续发送。重新插入后请再次连接。');}});
  function refreshConnection(){
   const connected=!!transport.device?.opened;
   $('connection-status').textContent=connected?'接收器已连接':'未连接';$('connection-status').classList.toggle('connected',connected);
   $('connect').classList.toggle('hidden',connected);$('disconnect').classList.toggle('hidden',!connected);
   $('connect').disabled=busy||!isSupported;
+  refreshConnectionScreen(connected);
   $('onboard-retry').disabled=busy||!connected;
   if(!connected){boardModeKnown=false;boardHardwareActive=false;boardCurrentName='';}renderBoardActivation();
   for(const id of ['side-mode','side-color','side-brightness','side-speed'])$(id).disabled=busy&&!nativeWriting&&!sideWriting;
@@ -706,6 +789,19 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
   for(const b of $('native-colors').querySelectorAll('button'))b.disabled=nativeLocked||!nativeRecognized||!e.color;
   $('native-hex').disabled=nativeLocked||!nativeRecognized||!e.color;
   for(const b of document.querySelectorAll('[data-global-value]'))b.disabled=globalReading||globalReadPending;
+ }
+ function refreshConnectionScreen(connected){
+  const screen=$('connection-screen'),sidebar=document.querySelector('.sidebar'),workspace=$('workspace');
+  const wasOffline=document.body.classList.contains('receiver-offline');
+  document.body.classList.toggle('receiver-offline',!connected);
+  document.body.classList.toggle('receiver-connecting',busy&&!connected);
+  screen.inert=connected;screen.setAttribute('aria-hidden',String(connected));screen.setAttribute('aria-busy',String(busy&&!connected));
+  sidebar.inert=!connected;workspace.inert=!connected;
+  $('connection-screen-connect').disabled=busy||!isSupported||connected;
+  $('connection-screen-label').textContent=connected?'连接成功':busy?'正在连接…':'连接 2.4G 接收器';
+  if(wasOffline===!connected)return;
+  if(!connected){closeTemplatePicker(true);closeFramesDialogs(true);closeAnimationForm(false);abandonFramesTransition();}
+  (connected?$('disconnect'):$('connection-screen-connect')).focus({preventScroll:true});
  }
  async function run(action,kind='other'){
   if(busy)return;busy=true;activeBackup=null;error();refreshConnection();
@@ -845,7 +941,7 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
   note('浏览器已直接打开接收器灯光接口。将自动读取当前页面的设置。');
   if(tab==='native'&&nativeSection==='backlight')requestNativeRead();else if(tab==='native'&&nativeSection==='onboard')requestBoardRead();else if(tab==='native'&&nativeSection==='frames'){if(framesMode==='play')startPlayback();else startFramesLive();}else if(globalActive())requestGlobalRead();
  }
- $('connect').onclick=()=>run(async()=>{
+ $('connection-screen-connect').onclick=$('connect').onclick=()=>run(async()=>{
   // requestDevice must remain directly inside this user gesture.
   const devices=await navigator.hid.requestDevice({filters:[{vendorId:0x3554,productId:0xfa09,usagePage:0xff02,usage:2}]});
   if(!devices.length){note('未选择设备，键盘灯光没有变化。');return;}await openDevice(devices[0]);
@@ -1213,8 +1309,9 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
  }
  function framesModeUI(){
   if(!framesSwitching)document.body.classList.toggle('frames-mode-play',framesMode==='play');
-  const lower=$('frames-lower');if(lower)lower.inert=framesMode==='play';
-  const keyboard=$('frames-keyboard');if(keyboard)keyboard.inert=framesMode==='play';
+  document.body.classList.toggle('frames-mode-community',framesMode==='community');
+  const lower=$('frames-lower');if(lower)lower.inert=framesMode!=='edit';
+  const keyboard=$('frames-keyboard');if(keyboard)keyboard.inert=framesMode!=='edit';
   framesModeNavUI();
  }
  function positionFramesModeNav(){
@@ -1223,7 +1320,7 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
   const rowBox=row.getBoundingClientRect(),sideBox=sidebar.getBoundingClientRect();
   const item=nav.querySelector('.frames-mode-option');
   const itemHeight=item?item.offsetHeight:44;
-  const index=framesMode==='edit'?1:0;
+  const index=Array.from(nav.querySelectorAll('[data-frames-mode]')).findIndex(b=>b.dataset.framesMode===framesMode);
   nav.style.top=(rowBox.top-sideBox.top+rowBox.height/2)+'px';
   nav.style.setProperty('--mode-shift',(-(index*itemHeight+itemHeight/2))+'px');
  }
@@ -1284,7 +1381,13 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
   Promise.all(motion.animations.map(a=>a.finished.catch(()=>{}))).then(()=>finishFramesMotion(motion));
  }
  function setFramesMode(mode,{silent=false}={}){
-  if(mode!=='play'&&mode!=='edit')return;
+  if(!['play','edit','community'].includes(mode))return;
+  if(mode==='community'||framesMode==='community'){
+   closeFramesDialogs(true);closeAnimationForm(false);stopPlayback();stopFramesLive();framesStroke=null;
+   abandonFramesTransition();framesMode=mode;commitFramesMode();
+   if(tab==='native'&&nativeSection==='frames'){if(mode==='edit')startFramesLive();else if(mode==='play')startPlayback();}
+   return;
+  }
   if(silent||!framesMotionAllowed()){
    abandonFramesTransition();framesMode=mode;commitFramesMode();
    if(tab==='native'&&nativeSection==='frames'){if(mode==='edit'){stopPlayback();startFramesLive();}else{stopFramesLive();startPlayback();}}
@@ -1614,8 +1717,14 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
  };
  $('native-hex').onblur=()=>{if(nativeHexEditing){nativeHexEditing=false;nativeUI();}};
  for(const field of ['brightness','speed'])$('native-'+field).oninput=e=>{settings[field]=+e.target.value;nativeUI();scheduleNative();};
- if(!isSupported)note('当前环境无法直接连接接收器，请使用桌面 Edge 或 Chrome 打开本地 HTML 或 localhost。');
+ if(!isSupported){const message='请用桌面 Edge 或 Chrome 打开此文件以连接接收器。';note(message);error(message);}
  
+ for(const key of keys){
+  const cap=document.createElement('span');cap.textContent=key.name;
+  if(['Esc','W','A','S','D'].includes(key.name))cap.className='connection-key-dark';
+  cap.style.left=key.x/620*100+'%';cap.style.top=key.y/238*100+'%';cap.style.width=key.w/620*100+'%';cap.style.height=key.h/238*100+'%';
+  $('connection-keyboard').append(cap);
+ }
  nativeUI();sideUI();renderBoard();renderFrames();renderFrameStrip();setupFrameStripEdges();renderBoardTemplates();globalUI();renderNavigation();refreshConnection();
  setupScrollEdges();
  if(typeof ResizeObserver==='function'){new ResizeObserver(()=>{if(!scrollMotions.has($('native-colors')))revealNativeColor();}).observe($('native-colors'));new ResizeObserver(()=>{if(!scrollMotions.has($('side-colors')))revealSideColor();}).observe($('side-colors'));}
