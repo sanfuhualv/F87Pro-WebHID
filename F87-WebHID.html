@@ -107,7 +107,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
 -->
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="light">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'none'; img-src 'self' data:; object-src 'none'; base-uri 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://api.sanfuhualv.com; img-src 'self' data: https:; object-src 'none'; base-uri 'none'">
 <title>F87pro · WebHID</title>
 <link rel="icon" href="data:,">
 <style>
@@ -182,7 +182,6 @@ main{margin-left:var(--nav-width)}
 .frames-mode-play #frames-section .onboard-palette-row > :not(#frames-open-animations):not(#frames-open-settings){display:none!important}
 .frames-mode-play #frames-section .onboard-palette-row{justify-content:center;gap:26px}
 .frames-mode-play #frames-keyboard{pointer-events:none}
-.frames-mode-community #frames-section > .onboard-editor{display:none}
 .frames-entering-edit .frames-lower,.frames-leaving-edit .frames-lower{opacity:0;visibility:hidden;pointer-events:none}
 .frames-entering-edit .onboard-palette-row,.frames-leaving-edit .onboard-palette-row{opacity:0;visibility:hidden}
 .frames-upper{will-change:auto}
@@ -548,7 +547,7 @@ body:not(.receiver-offline) .connection-keyboard,body:not(.receiver-offline) .co
   <div class="connection-art" aria-hidden="true"><div class="connection-orbit"></div><div class="connection-receiver"><div class="connection-usb"></div><div class="connection-dongle"><span>F87</span><i></i><small>2.4G</small></div></div><div id="connection-keyboard" class="connection-keyboard"></div></div>
  </div>
 </section>
-<aside class="sidebar" aria-label="键盘功能"><a href="#" class="brand" aria-label="F87 浏览器驱动工作台"><b>F87pro</b><span>WebHID</span></a><nav aria-label="功能导航"><button class="nav active" data-page="backlight" aria-current="page"><span class="nav-text">键盘背光</span></button><button class="nav" data-page="side" aria-current="false"><span class="nav-text">侧边灯条</span></button><button class="nav" data-page="onboard" aria-current="false"><span class="nav-text">自定义模式</span></button><button class="nav" data-page="frames" aria-current="false"><span class="nav-text">序列帧</span></button><button class="nav" data-page="mapping" aria-current="false"><span class="nav-text">按键映射</span></button><button class="nav" data-page="settings" aria-current="false"><span class="nav-text">设置</span></button></nav><div id="frames-mode-nav" class="frames-mode-nav" role="tablist" aria-label="序列帧显示模式"><button class="frames-mode-option" type="button" role="tab" data-frames-mode="play" aria-selected="false"><span class="frames-mode-text">播放动画</span></button><button class="frames-mode-option active" type="button" role="tab" data-frames-mode="edit" aria-selected="true"><span class="frames-mode-text">编辑动画</span></button><button class="frames-mode-option" type="button" role="tab" data-frames-mode="community" aria-selected="false"><span class="frames-mode-text">浏览社区</span></button></div></aside>
+<aside class="sidebar" aria-label="键盘功能"><a href="#" class="brand" aria-label="F87 浏览器驱动工作台"><b>F87pro</b><span>WebHID</span></a><nav aria-label="功能导航"><button class="nav active" data-page="backlight" aria-current="page"><span class="nav-text">键盘背光</span></button><button class="nav" data-page="side" aria-current="false"><span class="nav-text">侧边灯条</span></button><button class="nav" data-page="onboard" aria-current="false"><span class="nav-text">自定义模式</span></button><button class="nav" data-page="frames" aria-current="false"><span class="nav-text">序列帧</span></button><button class="nav" data-page="mapping" aria-current="false"><span class="nav-text">按键映射</span></button><button class="nav" data-page="settings" aria-current="false"><span class="nav-text">设置</span></button></nav><div id="frames-mode-nav" class="frames-mode-nav" role="tablist" aria-label="序列帧显示模式"><button class="frames-mode-option" type="button" role="tab" data-frames-mode="play" aria-selected="false"><span class="frames-mode-text">播放动画</span></button><button class="frames-mode-option active" type="button" role="tab" data-frames-mode="edit" aria-selected="true"><span class="frames-mode-text">编辑动画</span></button><button class="frames-mode-option" type="button" role="tab" data-frames-mode="community" aria-selected="false" disabled title="社区模块未加载"><span class="frames-mode-text">浏览社区</span></button></div></aside>
 <main id="workspace"><header><div><div class="breadcrumb">工作空间 <span>/</span> <span id="page-crumb">灯效模板</span></div><h1 id="page-title">让键盘，自成光景<span>。</span></h1><p id="page-subtitle">选择背光或侧灯效果，调整后自动应用。</p></div><div class="header-actions"><span class="status-pill" id="connection-status">未连接</span><button class="button primary" id="connect">连接 2.4G 接收器 <span>↗</span></button><button class="button secondary hidden" id="disconnect">断开连接</button><a class="github-link" href="https://github.com/sanfuhualv/F87Pro-WebHID" target="_blank" rel="noopener noreferrer" aria-label="打开 GitHub 项目仓库（新标签页）" title="GitHub · F87Pro-WebHID"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 .297C5.37.297 0 5.67 0 12.297c0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.043-1.61-4.043-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.087-.744.083-.729.083-.729 1.205.084 1.838 1.237 1.838 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.605-2.665-.305-5.467-1.334-5.467-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.52 11.52 0 0112 6.096c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.652.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.606-.015 2.898-.015 3.293 0 .322.216.694.825.576C20.565 22.092 24 17.597 24 12.297c0-6.627-5.373-12-12-12"/></svg></a></div></header>
 
 <div id="error" class="error hidden" role="alert"></div><div id="message" class="notice" role="status">先连接接收器。授权与连接不会自动改动键盘灯光。</div>
@@ -604,6 +603,7 @@ body:not(.receiver-offline) .connection-keyboard,body:not(.receiver-offline) .co
   <div class="frames-strip"><p id="frames-empty" class="frames-empty">还没有帧，用上方“插入帧”按钮创建第一帧。</p><ol id="frames-list" class="frames-frame-list" aria-label="序列帧列表"></ol></div>
   </div>
  </div>
+
 </section>
 <section id="side-section" class="side-section backlight-workspace hidden" aria-label="侧边灯条">
  <div class="native-stage"><section class="mode-column" aria-label="侧灯模式"><div id="side-mode-list" class="mode-list side-mode-list" role="group" aria-label="侧灯模式" tabindex="0"></div></section><section class="color-column" aria-label="侧灯颜色"><div id="side-colors" class="native-color-list" role="group" aria-label="侧灯颜色"></div></section></div>
@@ -999,6 +999,7 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
 })(globalThis);
 
 </script>
+<script src="community.js" data-api-base="https://api.sanfuhualv.com/f87pro-webhid"></script>
 <script>
 (function(){
  'use strict';
@@ -1145,6 +1146,7 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
  const framesButtons=new Map(),framesCardEls=new Map(),framesStoreKey='f87-webhid-sequence-v1';
  let framesStroke=null,framesFrames=[],framesSelected=-1,framesLastSelected=-1,framesDraftBrightness=100,framesPlaying=false,framesTimer=null,framesSaveTimer=null,framesSent=0,framesSendIndex=0,framesLastPreview=0,framesLastPackets=0,framesSendTimes=[],framesLoopAt=null,framesMode='play';
  let framesCommitted=null,framesLiveTimer=null,framesLivePending=false,framesLiveInFlight=false,framesLiveRetryTimer=null,framesSwitching=false,framesTransitionAnim=null;
+ let communityController=null;
  let keyboardPageAnimation=null;
  let keyboardPageAppearance=null;
  let keyboardOverlayAnimation=null;
@@ -1184,6 +1186,7 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
   document.body.classList.toggle('receiver-connecting',busy&&!connected);
   screen.inert=connected;screen.setAttribute('aria-hidden',String(connected));screen.setAttribute('aria-busy',String(busy&&!connected));
   sidebar.inert=!connected;workspace.inert=!connected;
+  communityController?.setActive(connected&&nativeSection==='frames'&&framesMode==='community');
   $('connection-screen-connect').disabled=busy||!isSupported||connected;
   $('connection-screen-label').textContent=connected?'连接成功':busy?'正在连接…':'连接 2.4G 接收器';
   if(wasOffline===!connected)return;
@@ -1831,7 +1834,11 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
   const frame=makeFrame(framesColors,currentFrameBrightness());
   framesFrames.splice(index,0,frame);
   if(framesLoopAt!==null&&index<=framesLoopAt)framesLoopAt++;
-  framesSelected=index;framesLastSelected=index;framesDraftBrightness=frame.brightness;framesColors=frame.colors;
+  const selectNewFrame=mode!=='end';
+  framesSelected=selectNewFrame?index:-1;
+  framesLastSelected=index;
+  framesDraftBrightness=frame.brightness;
+  framesColors=selectNewFrame?frame.colors:normalizeFrameColors(frame.colors);
   renderFrameStrip();renderFrames();renderFrameSelection();revealFrame(index,{smooth:true});saveSequence(true);
  }
  function deleteFrame(){
@@ -1943,6 +1950,7 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
   const lower=$('frames-lower');if(lower)lower.inert=framesMode!=='edit';
   const keyboard=$('frames-keyboard');if(keyboard)keyboard.inert=framesMode!=='edit';
   framesModeNavUI();
+  communityController?.setActive(nativeSection==='frames'&&framesMode==='community'&&!!transport.device?.opened);
  }
  function positionFramesModeNav(){
   const nav=$('frames-mode-nav'),row=document.querySelector('[data-page="frames"]'),sidebar=document.querySelector('.sidebar');
@@ -2017,6 +2025,7 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
  }
  function setFramesMode(mode,{silent=false}={}){
   if(!['play','edit','community'].includes(mode))return;
+  if(mode==='community'&&!communityController)return;
   if(mode==='community'||framesMode==='community'){
    cancelKeyboardPageTransition();
    closeFramesDialogs(true);closeAnimationForm(false);stopPlayback();stopFramesLive();framesStroke=null;
@@ -2369,7 +2378,29 @@ globalThis.F87_DATA = {"keys":[{"name":"Esc","index":0,"x":17,"y":21,"w":24,"h":
   cap.style.left=key.x/620*100+'%';cap.style.top=key.y/238*100+'%';cap.style.width=key.w/620*100+'%';cap.style.height=key.h/238*100+'%';
   $('connection-keyboard').append(cap);
  }
+ communityController=window.F87Community?.create({
+  keys,drawFrameCard,sequenceSnapshot,
+  loadSetting:load,saveSetting:store,
+  saveAnimation:animation=>{
+   const checked=validateAnimation(animation);
+   if(savedAnimations.some(item=>item.id===checked.id))return;
+   const next=[...savedAnimations,checked];
+   if(!store(animationStoreKey,next))throw Error('保存失败，浏览器存储空间不足或不可用。');
+   savedAnimations=next;renderAnimations();
+  },
+  applyAnimation:(animation,mode,{backupName='载入前草稿'}={})=>{
+   const checked=validateAnimation(animation);
+   if(framesFrames.length){
+    const backup=validateAnimation({id:newFrameId(),name:backupName,sequence:sequenceSnapshot()}),next=[...savedAnimations,backup];
+    if(!store(animationStoreKey,next))throw Error('当前草稿备份失败，请释放浏览器存储空间后重试。');
+    savedAnimations=next;renderAnimations();
+   }
+   checked.sequence.gap=framesGap;
+   applyAnimation(checked);setFramesMode(mode,{silent:true});
+  }
+ });
  nativeUI();sideUI();renderBoard();renderFrames();renderFrameStrip();setupFrameStripEdges();renderBoardTemplates();globalUI();renderNavigation();refreshConnection();
+ if(location.hash==='#community'){selectPage('frames');setFramesMode('community',{silent:true});}
  setupScrollEdges();
  if(typeof ResizeObserver==='function'){new ResizeObserver(()=>{if(!scrollMotions.has($('native-colors')))revealNativeColor();}).observe($('native-colors'));new ResizeObserver(()=>{if(!scrollMotions.has($('side-colors')))revealSideColor();}).observe($('side-colors'));}
 })();
