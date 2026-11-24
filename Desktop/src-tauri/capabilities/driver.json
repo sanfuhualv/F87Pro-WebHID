@@ -20,6 +20,7 @@
     "allow-hid-poll",
     "allow-hid-detach",
     "allow-open-driver",
+    "allow-open-github",
     "allow-community-request",
     "allow-quit",
     "allow-audio-start",

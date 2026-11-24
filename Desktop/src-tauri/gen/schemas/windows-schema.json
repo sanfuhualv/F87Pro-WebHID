@@ -255,6 +255,12 @@
           "markdownDescription": "Enables the open_driver command without any pre-configured scope."
         },
         {
+          "description": "Enables the open_github command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-open-github",
+          "markdownDescription": "Enables the open_github command without any pre-configured scope."
+        },
+        {
           "description": "Enables the play_cached command without any pre-configured scope.",
           "type": "string",
           "const": "allow-play-cached",
@@ -373,6 +379,12 @@
           "type": "string",
           "const": "deny-open-driver",
           "markdownDescription": "Denies the open_driver command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the open_github command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-open-github",
+          "markdownDescription": "Denies the open_github command without any pre-configured scope."
         },
         {
           "description": "Denies the play_cached command without any pre-configured scope.",

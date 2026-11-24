@@ -6,6 +6,7 @@ const root=path.dirname(fileURLToPath(import.meta.url));
 fs.mkdirSync(path.join(root,'ui'),{recursive:true});
 const html=fs.readFileSync(path.join(root,'../Web/F87-WebHID.html'),'utf8');
 const desktopHtml=html.replace('<html lang="zh-CN">','<html lang="zh-CN" class="f87-desktop">').replace('<title>F87pro · WebHID</title>','<title>F87 Pro Desktop</title>')
+ .replaceAll('打开 GitHub 项目仓库（新标签页）','使用系统浏览器打开 GitHub 项目仓库')
  .replaceAll('<span>WebHID</span>','<span>Desktop</span>')
  .replace('<footer><span>F87pro WebHID</span>','<footer><span>F87 Pro Desktop</span>')
  .replace('body:not(.frames-mode-play) #frames-open-desktop{display:none!important}','body #frames-open-desktop{display:none!important}');

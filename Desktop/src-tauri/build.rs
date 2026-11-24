@@ -12,6 +12,7 @@ fn main() {
             "hide_window",
             "quit",
             "open_driver",
+            "open_github",
             "hid_begin",
             "hid_send",
             "hid_end",

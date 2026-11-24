@@ -228,11 +228,30 @@ fn bridge_script(config: &Config) -> String {
         include_str!("../../ui/audio-bridge.js")
     )
 }
+fn open_github_url(url: &tauri::Url) -> Result<(), String> {
+    use windows::{core::{w, PCWSTR}, Win32::UI::{Shell::ShellExecuteW, WindowsAndMessaging::SW_SHOWNORMAL}};
+    if url.scheme() != "https" || url.host_str() != Some("github.com") {
+        return Err("仅支持 GitHub HTTPS 链接".into());
+    }
+    let target: Vec<u16> = url.as_str().encode_utf16().chain(Some(0)).collect();
+    let result = unsafe { ShellExecuteW(None, w!("open"), PCWSTR(target.as_ptr()), PCWSTR::null(), PCWSTR::null(), SW_SHOWNORMAL) };
+    if result.0 as isize <= 32 { return Err("无法打开系统默认浏览器，请检查默认浏览器设置".into()); }
+    Ok(())
+}
+#[tauri::command]
+fn open_github() -> Result<(), String> {
+    let url = tauri::Url::parse("https://github.com/sanfuhualv/F87Pro-WebHID").map_err(|e| e.to_string())?;
+    open_github_url(&url)
+}
 fn popup(
     app: &tauri::AppHandle,
     url: tauri::Url,
     features: tauri::webview::NewWindowFeatures,
 ) -> NewWindowResponse<tauri::Wry> {
+    if url.scheme() == "https" && url.host_str() == Some("github.com") {
+        let _ = open_github_url(&url);
+        return NewWindowResponse::Deny;
+    }
     if url.as_str() != "about:blank" && url.scheme() != "https" {
         return NewWindowResponse::Deny;
     }
@@ -305,6 +324,7 @@ fn main() {
             play_sequence,
             play_cached,
             open_driver,
+            open_github,
             hid_begin,
             hid_send,
             hid_end,

@@ -5,6 +5,18 @@
  const local=['http://tauri.localhost','tauri://localhost'].includes(location.origin);
  if(!trusted||window.top!==window||(!local&&(location.origin!==trusted.origin||!location.pathname.startsWith(trusted.path))))return;
  const call=(cmd,args)=>window.__TAURI__.core.invoke(cmd,args);
+ function openRepository(event) {
+  if (event.type === 'auxclick' && event.button !== 1) return;
+  const link = event.target.closest?.('a.github-link');
+  if (!link) return;
+  event.preventDefault(); event.stopImmediatePropagation();
+  void call('open_github').catch(error => {
+   const status = document.getElementById('error');
+   if (status) { status.textContent = String(error); status.classList.remove('hidden'); }
+  });
+ }
+ document.addEventListener('click', openRepository, true);
+ document.addEventListener('auxclick', openRepository, true);
  window.__F87_BACKGROUND_ACTIVE__=false;
  const hid=new EventTarget();
  class NativeDevice extends EventTarget{
