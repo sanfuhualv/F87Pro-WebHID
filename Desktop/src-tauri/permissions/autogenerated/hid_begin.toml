@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-hid-begin"
+description = "Enables the hid_begin command without any pre-configured scope."
+commands.allow = ["hid_begin"]
+
+[[permission]]
+identifier = "deny-hid-begin"
+description = "Denies the hid_begin command without any pre-configured scope."
+commands.deny = ["hid_begin"]

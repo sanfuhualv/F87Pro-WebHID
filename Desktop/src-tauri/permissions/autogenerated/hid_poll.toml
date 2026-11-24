@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-hid-poll"
+description = "Enables the hid_poll command without any pre-configured scope."
+commands.allow = ["hid_poll"]
+
+[[permission]]
+identifier = "deny-hid-poll"
+description = "Denies the hid_poll command without any pre-configured scope."
+commands.deny = ["hid_poll"]

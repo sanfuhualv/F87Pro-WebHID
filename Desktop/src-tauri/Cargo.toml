@@ -1,0 +1,28 @@
+[package]
+name = "f87-desktop"
+version = "1.0.0"
+edition = "2021"
+description = "F87 PRO desktop lighting companion"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
+
+[build-dependencies]
+tauri-build = { version = "2.6", features = [] }
+
+[dependencies]
+tauri = { version = "2.11", features = ["tray-icon"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+windows = { version = "0.61", features = [
+  "Win32_Foundation", "Win32_Devices_DeviceAndDriverInstallation",
+  "Win32_Devices_HumanInterfaceDevice", "Win32_Storage_FileSystem",
+  "Win32_Security", "Win32_System_IO", "Win32_System_Threading",
+  "Win32_Media_Audio", "Win32_System_Com",
+  "Win32_Networking_WinHttp"
+] }
+
+[profile.release]
+strip = true
+lto = "thin"

@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-play-cached"
+description = "Enables the play_cached command without any pre-configured scope."
+commands.allow = ["play_cached"]
+
+[[permission]]
+identifier = "deny-play-cached"
+description = "Denies the play_cached command without any pre-configured scope."
+commands.deny = ["play_cached"]

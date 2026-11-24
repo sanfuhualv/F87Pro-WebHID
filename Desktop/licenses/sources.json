@@ -1,0 +1,24 @@
+{
+  "alloc-stdlib": [
+    "https://raw.githubusercontent.com/dropbox/rust-alloc-no-stdlib/6032b6a9b20e03737135c55a0270ccffcc1438ef/LICENSE"
+  ],
+  "selectors": [
+    "https://raw.githubusercontent.com/spdx/license-list-data/main/text/MPL-2.0.txt"
+  ],
+  "unic": [
+    "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-MIT",
+    "https://raw.githubusercontent.com/open-i18n/rust-unic/5878605364af97a3358368a6eaef02104af2e016/LICENSE-APACHE"
+  ],
+  "webview2-com": [
+    "https://raw.githubusercontent.com/wravery/webview2-rs/b74dc5e2b394044bea5191052868ce7a106c202c/LICENSE"
+  ],
+  "webview2-com-macros": [
+    "https://raw.githubusercontent.com/wravery/webview2-rs/dffa41a8a46d3f5565eefbff2de57d38d399f158/LICENSE"
+  ],
+  "Noto-Sans-SC": [
+    "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/OFL.txt"
+  ],
+  "Space-Grotesk": [
+    "https://raw.githubusercontent.com/google/fonts/main/ofl/spacegrotesk/OFL.txt"
+  ]
+}

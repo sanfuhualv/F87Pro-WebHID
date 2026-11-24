@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-hid-send"
+description = "Enables the hid_send command without any pre-configured scope."
+commands.allow = ["hid_send"]
+
+[[permission]]
+identifier = "deny-hid-send"
+description = "Denies the hid_send command without any pre-configured scope."
+commands.deny = ["hid_send"]

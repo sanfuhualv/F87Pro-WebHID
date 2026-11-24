@@ -1,0 +1,11 @@
+# Automatically generated - DO NOT EDIT!
+
+[[permission]]
+identifier = "allow-hid-detach"
+description = "Enables the hid_detach command without any pre-configured scope."
+commands.allow = ["hid_detach"]
+
+[[permission]]
+identifier = "deny-hid-detach"
+description = "Denies the hid_detach command without any pre-configured scope."
+commands.deny = ["hid_detach"]
